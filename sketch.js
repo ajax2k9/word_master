@@ -26,6 +26,7 @@ function mousePressed(){
   m_x=mouseX
   m_y=mouseY
   m_sy = mouseY;
+  return false
 }
 
 function mouseDragged(){
@@ -37,7 +38,9 @@ function mouseDragged(){
     m_y=mouseY
 
     m_dy = mouseY- m_sy;
+    
   }
+  return false
 }
 
 function mouseReleased(){
@@ -46,6 +49,7 @@ function mouseReleased(){
   lvl.setAllTiles()
   turns++;
   solved = lvl.checkWin()
+  return false
 }
 function drawWin(x,y){
   text("you win!",x,y);
