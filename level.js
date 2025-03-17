@@ -75,10 +75,10 @@ class level {
 
     move(dx,dy){
         if(this.moveDir == undefined){
-            if(abs(dx) > abs(dy)){
-                this.moveDir = 0;
-            } else {
+            if(abs(dx)*1.5 < abs(dy)){
                 this.moveDir = 1;
+            } else {
+                this.moveDir = 0;
             }
         }
         this.tiles.forEach(t=>{
