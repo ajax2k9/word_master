@@ -74,7 +74,7 @@ class level {
 
     move(dx,dy){
         if(this.moveDir == undefined){
-            if(abs(dx) > 0.07 || abs(dy)> 0.07){
+            if(abs(dx) > 0.05 || abs(dy)> 0.05){
                 if(abs(dx) < abs(dy)){
                     this.moveDir = 1;
                 } else {
