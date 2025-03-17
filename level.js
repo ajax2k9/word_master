@@ -15,7 +15,6 @@ class level {
             return false    
         }
 
-        
         this.w = this.data.width
         this.h = this.data.height
         
@@ -75,10 +74,12 @@ class level {
 
     move(dx,dy){
         if(this.moveDir == undefined){
-            if(abs(dx)*1.5 < abs(dy)){
-                this.moveDir = 1;
-            } else {
-                this.moveDir = 0;
+            if(abs(dx) > 0.07 || abs(dy)> 0.07){
+                if(abs(dx) < abs(dy)){
+                    this.moveDir = 1;
+                } else {
+                    this.moveDir = 0;
+                }
             }
         }
         this.tiles.forEach(t=>{
