@@ -73,9 +73,9 @@ function draw() {
   push()
   rectMode(CORNER)
   stroke(0)
-  // beginClip(true)
-  // rect(spacing/2-1,spacing/2-1,lvl.w*spacing+2,lvl.h*spacing+2)
-  // endClip()
+  beginClip(true)
+  rect(spacing/2-1,spacing/2-1,lvl.w*spacing+2,lvl.h*spacing+2)
+  endClip()
 
   translate(spacing,spacing)
   rectMode(CENTER)
