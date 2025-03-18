@@ -30,7 +30,7 @@ function mousePressed(){
 }
 
 function mouseDragged(){
-  let max_dm = 0.4
+  let max_dm = 0.3
   if(selected_tile != undefined){
     let dx = constrain((mouseX-m_x)/spacing,-max_dm,max_dm)
     let dy = constrain((mouseY-m_y)/spacing,-max_dm,max_dm)
