@@ -32,8 +32,8 @@ function mousePressed(){
 function mouseDragged(){
   let max_dm = 0.3
   if(selected_tile != undefined){
-    let dx = constrain((mouseX-m_x)/spacing,-max_dm,max_dm)
-    let dy = constrain((mouseY-m_y)/spacing,-max_dm,max_dm)
+    let dx = max_dm;// constrain((mouseX-m_x)/spacing,-max_dm,max_dm)
+   let dy = 0//constrain((mouseY-m_y)/spacing,-max_dm,max_dm)
     lvl.move(dx,dy)
     m_x=mouseX
     m_y=mouseY
