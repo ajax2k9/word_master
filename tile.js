@@ -3,7 +3,7 @@ class tile {
     this.x = x
     this.y = y
     this.c = color(255)
-    this.solved = false;
+    this.solved = true;
     this.moving = false;
   }
 
@@ -55,7 +55,6 @@ class tile {
     if(x >= 0 && x < lvl.w && y >= 0 && y < lvl.h ){
       lvl.chars[x+y*lvl.w]=this.char;
     } else {
-      this.c = color(200)
       if(x < 0){
         this.char = lvl.chars[lvl.w-1+y*lvl.w]
       }
@@ -70,13 +69,20 @@ class tile {
       }
     }
 
-    fill(this.c)
+    if(this.moving){
+      fill(255)
+    } else {
+      fill(this.c)
+    }
+    
     stroke(50)
-    rect(this.x*spacing,this.y*spacing,spacing,spacing)
+    strokeWeight(2)
+    rect(this.x*spacing,this.y*spacing,spacing,spacing,10)
     fill(0)
     noStroke()
     textAlign(CENTER,CENTER)
-    textSize(20)
+    textStyle(BOLD)
+    textSize(25)
     text(this.char,this.x*spacing,this.y*spacing)            
   }
 }

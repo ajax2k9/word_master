@@ -49,7 +49,6 @@ class level {
         for(let i = 0; i < lvl.h*lvl.w; i++){
             let idx = floor(random(0,letters.length))
             this.shuffled.push(letters[idx])
-            console.log(letters[idx])
             letters.splice(idx,1)
         }
     }

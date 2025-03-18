@@ -13,7 +13,7 @@ function preload(){
   lvldata = loadJSON("levels/1.json")
 }
 function setup() {
-  createCanvas(500, 300);
+  createCanvas(500, 400);
   rectMode(CENTER)
   lvl = new level()
   lvl.loadLevel()
@@ -52,27 +52,45 @@ function mouseReleased(){
   return false
 }
 function drawWin(x,y){
+  textSize(20)
+  noStroke()
+  fill(0)
   text("you win!",x,y);
   text("Turns : "+ turns,x,y+30)
 }
+function drawInstructions(x,y){
+  textSize(14)
+  noStroke()
+  fill(0)
+  text(
+    "How To Play:\n\n"+ 
+    "Drag the letters around left/right or up/down. \nTry to solve the four words, with Green being a letter in \nthe right place, Yellow being in the wrong place but\nright word",x,y);
+}
 
 function draw() {
-  background(220);
+  background(255);
   push()
   rectMode(CORNER)
+  stroke(0)
   beginClip(true)
-  rect(spacing/2,spacing/2,lvl.w*spacing,lvl.h*spacing)
+  rect(spacing/2-1,spacing/2-1,lvl.w*spacing+2,lvl.h*spacing+2)
   endClip()
 
   translate(spacing,spacing)
   rectMode(CENTER)
   lvl.draw()
   pop()
+  noFill()
+  stroke(0)
+  strokeWeight(4)
+  rectMode(CORNER)
+  rect(spacing/2-1,spacing/2-1,lvl.w*spacing+2,lvl.h*spacing+2,10)
+
     if(solved){
-      textSize(20)
-      noStroke()
       drawWin(300,100)
     }
+
+  drawInstructions(spacing/2,310)
   }
 
 
