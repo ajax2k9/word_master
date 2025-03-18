@@ -55,7 +55,7 @@ class level {
     selTile(x,y){
         this.tiles.forEach(t=>{
         if(selected_tile != undefined) return
-        if(abs(t.x-x/spacing) < 0.5 && abs(t.y-y/spacing) < 0.5){
+        if(abs(t.x-x/spacing) < 0.5 && abs(t.y-y/spacing) < 0.5 && t.outside == false){
             selected_tile = t;
             }
         })

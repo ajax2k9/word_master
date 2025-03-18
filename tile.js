@@ -5,6 +5,7 @@ class tile {
     this.c = color(255)
     this.solved = true;
     this.moving = false;
+    this.outside = false;
   }
 
   move(dx,dy){
@@ -53,8 +54,10 @@ class tile {
     let y = dblround(this.y)
 
     if(x >= 0 && x < lvl.w && y >= 0 && y < lvl.h ){
+      this.outside = false
       lvl.chars[x+y*lvl.w]=this.char;
     } else {
+      this.outside = true
       if(x < 0){
         this.char = lvl.chars[lvl.w-1+y*lvl.w]
       }
@@ -74,7 +77,7 @@ class tile {
     } else {
       fill(this.c)
     }
-    
+
     stroke(50)
     strokeWeight(2)
     rect(this.x*spacing,this.y*spacing,spacing,spacing,10)
