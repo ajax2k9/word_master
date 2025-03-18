@@ -33,6 +33,10 @@ class level {
             }
         }
 
+        this.tiles.forEach(t=>{
+            t.set_chars()
+        })
+
         return true
     }
 

@@ -14,6 +14,7 @@ function preload(){
 }
 function setup() {
   createCanvas(500, 400);
+  //frameRate(15)
   rectMode(CENTER)
   lvl = new level()
   lvl.loadLevel()
@@ -91,7 +92,7 @@ function draw() {
       drawWin(300,100)
     }
 
-  //drawInstructions(spacing/2,310)
+  drawInstructions(spacing/2,310)
   }
 
 

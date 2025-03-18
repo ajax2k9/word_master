@@ -75,10 +75,6 @@ class tile {
 
 
   draw(){
-  
-
-    
-
     if(this.moving){
       fill(255)
     } else {
