@@ -32,8 +32,8 @@ function mousePressed(){
 function mouseDragged(){
   let max_dm = 0.3
   if(selected_tile != undefined){
-    let dx = max_dm;// constrain((mouseX-m_x)/spacing,-max_dm,max_dm)
-   let dy = 0//constrain((mouseY-m_y)/spacing,-max_dm,max_dm)
+    let dx = constrain((mouseX-m_x)/spacing,-max_dm,max_dm)
+   let dy = constrain((mouseY-m_y)/spacing,-max_dm,max_dm)
     lvl.move(dx,dy)
     m_x=mouseX
     m_y=mouseY
@@ -73,9 +73,9 @@ function draw() {
   push()
   rectMode(CORNER)
   stroke(0)
-  beginClip(true)
-  rect(spacing/2-1,spacing/2-1,lvl.w*spacing+2,lvl.h*spacing+2)
-  endClip()
+  // beginClip(true)
+  // rect(spacing/2-1,spacing/2-1,lvl.w*spacing+2,lvl.h*spacing+2)
+  // endClip()
 
   translate(spacing,spacing)
   rectMode(CENTER)
@@ -91,7 +91,7 @@ function draw() {
       drawWin(300,100)
     }
 
-  drawInstructions(spacing/2,310)
+  //drawInstructions(spacing/2,310)
   }
 
 

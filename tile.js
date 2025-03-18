@@ -29,6 +29,8 @@ class tile {
     if(this.y > lvl.h){
       this.y-=(lvl.h+1);
     }
+
+    this.set_chars()
   }
 
   set_color(){
@@ -48,11 +50,9 @@ class tile {
   }
   }
 
-
-  draw(){
+  set_chars(){
     let x = dblround(this.x)
     let y = dblround(this.y)
-
     if(x >= 0 && x < lvl.w && y >= 0 && y < lvl.h ){
       this.outside = false
       lvl.chars[x+y*lvl.w]=this.char;
@@ -71,6 +71,13 @@ class tile {
          this.char = lvl.chars[x]
       }
     }
+  }
+
+
+  draw(){
+  
+
+    
 
     if(this.moving){
       fill(255)
