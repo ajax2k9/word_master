@@ -16,7 +16,7 @@ function preload(){
 }
 function setup() {
   spacing = floor(100*windowHeight/windowWidth*1920/676);
-  sizeX = 4 * spacing+100;
+  sizeX = 4 * spacing+200;
   cnv  = createCanvas(sizeX, 1000);
   //frameRate(15)
   rectMode(CENTER)
