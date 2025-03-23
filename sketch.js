@@ -11,6 +11,9 @@ let turns=0;
 let offs = 20
 let offsY = 30
 let solved = false
+
+p5.disableFriendlyErrors = true; // disables FES
+
 function preload(){
   lvldata = loadJSON("levels/1.json")
 }
