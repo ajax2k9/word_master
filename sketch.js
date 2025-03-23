@@ -98,7 +98,7 @@ function draw() {
     }
 
   drawInstructions(offs,offsY*2+lvl.w*spacing)
-  text("copyright Alex Mendelsberg 2025 - v0.1.0",offs,15)
+  text("copyright Alex Mendelsberg 2025 - v0.1.1",offs,15)
   }
 
 
