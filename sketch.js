@@ -11,6 +11,7 @@ let turns=0;
 let solved = false
 function preload(){
   lvldata = loadJSON("levels/1.json")
+  spacing = floor(spacing * windowWidth/1920)
 }
 function setup() {
   createCanvas(500, 400);
