@@ -8,13 +8,16 @@ let m_dy= 0;
 let m_sy= 0;
 let lvldata;
 let turns=0;
+let offs = 20
+let offsY = 30
 let solved = false
 function preload(){
   lvldata = loadJSON("levels/1.json")
-  spacing = floor(spacing * windowWidth/1920)
 }
 function setup() {
-  createCanvas(500, 400);
+  spacing = floor(100*windowHeight/windowWidth*1920/676);
+  sizeX = 4 * spacing+100;
+  cnv  = createCanvas(sizeX, 1000);
   //frameRate(15)
   rectMode(CENTER)
   lvl = new level()
@@ -24,7 +27,7 @@ function setup() {
 
 function mousePressed(){
   if(solved) return
-  lvl.selTile(mouseX-spacing,mouseY-spacing)
+  lvl.selTile(mouseX-offs-spacing/2,mouseY-offsY-spacing/2)
   m_x=mouseX
   m_y=mouseY
   m_sy = mouseY;
@@ -77,10 +80,10 @@ function draw() {
   rectMode(CORNER)
   stroke(0)
   beginClip(true)
-  rect(spacing/2-1,spacing/2-1,lvl.w*spacing+2,lvl.h*spacing+2)
+  rect(offs-1,offsY-1,lvl.w*spacing+2,lvl.h*spacing+2)
   endClip()
 
-  translate(spacing,spacing)
+  translate(offs+spacing/2,offsY+spacing/2)
   rectMode(CENTER)
   lvl.draw()
   pop()
@@ -88,15 +91,14 @@ function draw() {
   stroke(0)
   strokeWeight(4)
   rectMode(CORNER)
-  rect(spacing/2-1,spacing/2-1,lvl.w*spacing+2,lvl.h*spacing+2,10)
+  rect(offs-1,offsY-1,lvl.w*spacing+2,lvl.h*spacing+2,10)
 
     if(solved){
       drawWin(300,100)
     }
 
-  drawInstructions(spacing/2,310)
-  textAlign(RIGHT)
-  text("copyright Alex Mendelsberg 2025 - v0.1.0",width-40,10)
+  drawInstructions(offs,offsY*2+lvl.w*spacing)
+  text("copyright Alex Mendelsberg 2025 - v0.1.0",offs,15)
   }
 
 
