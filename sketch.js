@@ -15,9 +15,9 @@ function preload(){
   lvldata = loadJSON("levels/1.json")
 }
 function setup() {
-  spacing = floor(100*windowHeight/windowWidth*1920/676);
+  spacing = floor(min(100*windowHeight/windowWidth*1920/676,200));
   sizeX = 4 * spacing+200;
-  cnv  = createCanvas(sizeX, 1000);
+  cnv  = createCanvas(sizeX, windowHeight);
   //frameRate(15)
   rectMode(CENTER)
   lvl = new level()
