@@ -15,6 +15,7 @@ function preload(){
   lvldata = loadJSON("levels/1.json")
 }
 function setup() {
+  pixelDensity(1)
   spacing = floor(min(100*windowHeight/windowWidth*1920/676,200));
   sizeX = 4 * spacing+200;
   cnv  = createCanvas(sizeX, windowHeight);
@@ -22,6 +23,7 @@ function setup() {
   rectMode(CENTER)
   lvl = new level()
   lvl.loadLevel()
+
 }
 
 
@@ -98,7 +100,7 @@ function draw() {
     }
 
   drawInstructions(offs,offsY*2+lvl.w*spacing)
-  text("copyright Alex Mendelsberg 2025 - v0.1.1",offs,15)
+  text("copyright Alex Mendelsberg 2025 - v0.1.2",offs,15)
   }
 
 
