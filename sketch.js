@@ -18,7 +18,7 @@ function setup() {
   pixelDensity(1)
   spacing = floor(min(100*windowHeight/windowWidth*1920/676,200));
   sizeX = 4 * spacing+200;
-  cnv  = createCanvas(sizeX, windowHeight);
+  cnv  = createCanvas(sizeX, sizeX+300);
   //frameRate(15)
   rectMode(CENTER)
   lvl = new level()
