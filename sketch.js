@@ -71,6 +71,7 @@ function drawInstructions(x,y){
 }
 
 function draw() {
+  textAlign(LEFT)
   background(255);
   push()
   rectMode(CORNER)
@@ -94,6 +95,8 @@ function draw() {
     }
 
   drawInstructions(spacing/2,310)
+  textAlign(RIGHT)
+  text("copyright Alex Mendelsberg 2025 - v0.1.0",width-40,10)
   }
 
 
