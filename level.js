@@ -40,15 +40,45 @@ class level {
         return true
     }
 
+    showWin(){
+        let winStr = "YOU WIN "
+        let numStr = turns.toString()
+        numStr = numStr.padStart(4," ")
+
+        this.tiles.forEach(t=>{
+            let counter = t.index
+            if(counter <winStr.length){
+                t.char =winStr[counter]
+                if(t.char != " "){
+                    t.c = color(0,255,0)
+                } else {
+                    t.c = color(255)
+                }
+            }
+            else if(counter > 11 && counter <16){
+                t.char = numStr[counter-12]
+                t.c = color(250,250,0)
+            } else {
+                t.char = ' '
+                t.c = color(255)
+            }
+            })
+    }
     shuffle(){
         let letters = []
-        this.data.words.forEach(w=>{
-            this.words.push(w)
-            let arr_w = Array.from(w)
+        for(let i = 0; i <lvl.h;i++){
+            
+            let idx = floor(random(0,this.data.words.length))            
+            let word = this.data.words[idx].toUpperCase()
+            this.data.words.splice(idx,1)
+
+            this.words.push(word)
+            let arr_w = Array.from(word)
             arr_w.forEach(l=>{             
                 letters.push(l)
             })
-        })
+        }
+        
 
         for(let i = 0; i < lvl.h*lvl.w; i++){
             let idx = floor(random(0,letters.length))

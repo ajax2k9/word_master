@@ -6,6 +6,7 @@ class tile {
     this.solved = true;
     this.moving = false;
     this.outside = false;
+    this.index = 0;
   }
 
   move(dx,dy){
@@ -44,7 +45,7 @@ class tile {
     } else {
       this.solved = false
       if(lvl.words[y].indexOf(this.char) >= 0){
-        this.c = color(230,200,0)
+        this.c = color(250,250,0)
       }
     }
   }
@@ -53,6 +54,7 @@ class tile {
   set_chars(){
     let x = dblround(this.x)
     let y = dblround(this.y)
+    this.index = x+y*lvl.w
     if(x >= 0 && x < lvl.w && y >= 0 && y < lvl.h ){
       this.outside = false
       lvl.chars[x+y*lvl.w]=this.char;

@@ -15,7 +15,7 @@ let solved = false
 p5.disableFriendlyErrors = true; // disables FES
 
 function preload(){
-  lvldata = loadJSON("levels/1.json")
+  lvldata = loadJSON("words/words.json")
 }
 function setup() {
   pixelDensity(1)
@@ -62,13 +62,13 @@ function mouseReleased(){
   solved = lvl.checkWin()
   return false
 }
-function drawWin(x,y){
-  textSize(20)
-  noStroke()
-  fill(0)
-  text("you win!",x,y);
-  text("Turns : "+ turns,x,y+30)
-}
+// function drawWin(x,y){
+//   textSize(20)
+//   noStroke()
+//   fill(0)
+//   text("you win!",x,y);
+//   text("Turns : "+ turns,x,y+30)
+// }
 function drawInstructions(x,y){
   textSize(14)
   noStroke()
@@ -99,11 +99,11 @@ function draw() {
   rect(offs-1,offsY-1,lvl.w*spacing+2,lvl.h*spacing+2,10)
 
     if(solved){
-      drawWin(300,100)
+     lvl.showWin()
     }
 
   drawInstructions(offs,offsY*2+lvl.w*spacing)
-  text("copyright Alex Mendelsberg 2025 - v0.1.2",offs,15)
+  text("copyright Alex Mendelsberg 2025 - v0.2.0",offs,15)
   }
 
 
