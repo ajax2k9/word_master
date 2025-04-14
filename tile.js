@@ -4,40 +4,15 @@ class tile {
     this.y = y
     this.c = color(255)
     this.solved = true;
-    this.moving = false;
-    this.outside = false;
     this.index = 0;
-  }
-
-  move(dx,dy){
-    let x = dblround(this.x)
-    let y = dblround(this.y)
-
-    this.x += dx
-    if(this.x < -1){
-      this.x+=lvl.w+1
-    }
-
-    if(this.x > lvl.w){
-      this.x-=(lvl.w+1);
-    }
-
-    this.y += dy
-    if(this.y < -1){
-      this.y+=lvl.h+1
-    }
-
-    if(this.y > lvl.h){
-      this.y-=(lvl.h+1);
-    }
-
-    this.set_chars()
+    this.posX = x*spacing
+    this.posY = y*spacing
+    this.moving = false
   }
 
   set_color(){
     let x = dblround(this.x)
     let y = dblround(this.y)
-    if(x >= 0 && x < lvl.w && y >= 0 && y < lvl.h ){
       this.c = color(255)   
     if(this.char == lvl.words[y][x]){
       this.c = color(0,255,0)
@@ -49,48 +24,48 @@ class tile {
       }
     }
   }
-  }
 
   set_chars(){
     let x = dblround(this.x)
     let y = dblround(this.y)
-    this.index = x+y*lvl.w
-    if(x >= 0 && x < lvl.w && y >= 0 && y < lvl.h ){
-      this.outside = false
-      lvl.chars[x+y*lvl.w]=this.char;
-    } else {
-      this.outside = true
-      if(x < 0){
-        this.char = lvl.chars[lvl.w-1+y*lvl.w]
-      }
-      if(x >= lvl.w){
-         this.char = lvl.chars[y*lvl.w]
-      }
-      if(y < 0){
-        this.char = lvl.chars[x+(lvl.h-1)*lvl.w]
-      }
-      if(y >= lvl.w){
-         this.char = lvl.chars[x]
-      }
-    }
+    lvl.chars[x+y*lvl.w]=this.char;
   }
 
 
   draw(){
-    if(this.moving){
-      fill(255)
+    fill(this.c)
+    let desX = this.x*spacing
+    let desY = this.y*spacing  
+    
+    if(abs(desX - this.posX)>0.2 || abs(desY - this.posY)>0.2){
+      this.posX +=(desX - this.posX)/5
+      this.posY +=(desY - this.posY)/5
+      this.moving = true
     } else {
-      fill(this.c)
+      this.moving = false
+      this.posX = desX
+      this.posY = desY
     }
 
+    if(!this.moving &&!lvl.solved){
+      this.set_chars()
+      this.set_color()
+    }
+    
+    this.index = this.x + this.y*lvl.w
+    
+    if(selected_tile == this){
+      this.posX = mouseX - offs - spacing/2
+      this.posY = mouseY - offsY - spacing/2
+    }
     stroke(50)
     strokeWeight(2)
-    rect(this.x*spacing,this.y*spacing,spacing,spacing,10)
+    rect(this.posX,this.posY,spacing,spacing,10)
     fill(0)
     noStroke()
     textAlign(CENTER,CENTER)
     textStyle(BOLD)
     textSize(25)
-    text(this.char,this.x*spacing,this.y*spacing)            
+    text(this.char,this.posX,this.posY)            
   }
 }
