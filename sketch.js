@@ -11,6 +11,7 @@ let lvldata;
 let turns=0;
 let offs = 20
 let offsY = 30
+let scale_ratio =1;
 
 p5.disableFriendlyErrors = true; // disables FES
 
@@ -20,6 +21,7 @@ function preload(){
 function setup() {
   pixelDensity(1)
   spacing = floor(min(100*windowHeight/windowWidth*1920/676,200));
+  scale_ratio =spacing/100
   sizeX = 4 * spacing+200;
   cnv  = createCanvas(sizeX, sizeX+300);
   rectMode(CENTER)
@@ -45,7 +47,7 @@ function mouseReleased(){
 }
 
 function drawInstructions(x,y){
-  textSize(24)
+  textSize(14*scale_ratio)
   noStroke()
   fill(0)
   text(
@@ -75,7 +77,7 @@ function draw() {
 
   drawInstructions(offs,offsY*2+lvl.w*spacing)
   textSize(20)
-  text("copyright Alex Mendelsberg 2025 - v0.3.1",offs,15)
+  text("copyright Alex Mendelsberg 2025 - v0.3.2",offs,15)
   }
 
 
