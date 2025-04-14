@@ -144,7 +144,7 @@ class level {
 
     
     draw(){
-        textSize(20)
+        textSize(30)
         let moving = false
         this.moving = false
         this.tiles.forEach(t=>{

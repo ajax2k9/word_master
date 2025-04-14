@@ -65,7 +65,6 @@ class tile {
     noStroke()
     textAlign(CENTER,CENTER)
     textStyle(BOLD)
-    textSize(25)
     text(this.char,this.posX,this.posY)            
   }
 }

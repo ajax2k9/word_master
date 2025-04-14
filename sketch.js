@@ -19,7 +19,7 @@ function preload(){
 }
 function setup() {
   pixelDensity(1)
-  spacing = floor(min(100*windowHeight/windowWidth*1920/676,100));
+  spacing = floor(min(100*windowHeight/windowWidth*1920/676,200));
   sizeX = 4 * spacing+200;
   cnv  = createCanvas(sizeX, sizeX+300);
   rectMode(CENTER)
@@ -45,7 +45,7 @@ function mouseReleased(){
 }
 
 function drawInstructions(x,y){
-  textSize(14)
+  textSize(24)
   noStroke()
   fill(0)
   text(
@@ -74,7 +74,8 @@ function draw() {
   rect(offs-1,offsY-1,lvl.w*spacing+2,lvl.h*spacing+2,10)
 
   drawInstructions(offs,offsY*2+lvl.w*spacing)
-  text("copyright Alex Mendelsberg 2025 - v0.3.0",offs,15)
+  textSize(20)
+  text("copyright Alex Mendelsberg 2025 - v0.3.1",offs,15)
   }
 
 
