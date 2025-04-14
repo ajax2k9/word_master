@@ -52,7 +52,7 @@ function drawInstructions(x,y){
   fill(0)
   text(
     "How To Play:\n\n"+ 
-    "Drag the letters around left/right or up/down. \nTry to solve the four words, with Green being a letter in \nthe right place, Yellow being in the wrong place but\nright word",x,y);
+    "Drag the letters to swap them. \nTry to solve the four words, with Green being a letter in \nthe right place, Yellow being in the wrong place but\nright word",x,y);
 }
 
 function draw() {
