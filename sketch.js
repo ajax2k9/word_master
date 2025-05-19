@@ -56,27 +56,42 @@ function drawInstructions(x,y){
     "Drag the letters to swap them. \nTry to solve the four words, with Green being a letter in \nthe right place, Yellow being in the wrong place but\nright word",x,y);
 }
 
+function drawContainer(){
+  
+  strokeWeight(4)
+  rectMode(CORNER)
+  fill(30,70,90)
+  stroke(30,70,90)
+  rect(offs-1,offsY+30,lvl.w*spacing+2,lvl.h*spacing+2,10)
+  fill(30,50,50)
+  stroke(30,50,100)
+  rect(offs-1,offsY-1,lvl.w*spacing+2,lvl.h*spacing+2,10)
+}
+
+function drawLines(){
+  strokeWeight(3)
+  let px = 0;
+  let py = 0;
+  for(let i = 0; i< lvl.h-1; i++){
+    px = 0;
+    py = spacing*i+spacing/2;
+    line(px-spacing/2,py,px+spacing*lvl.w-spacing/2,py)
+  }
+}
+
 function draw() {
   textAlign(LEFT)
   background(255);
-  push()
-  rectMode(CORNER)
-  stroke(0)
-  beginClip(true)
-  rect(offs-1,offsY-1,lvl.w*spacing+2,lvl.h*spacing+2)
-  endClip()
 
+  drawContainer()
+  push()
   translate(offs+spacing/2,offsY+spacing/2)
+  drawLines()
   rectMode(CENTER)
   lvl.draw()
   pop()
-  noFill()
-  stroke(0)
-  strokeWeight(4)
-  rectMode(CORNER)
-  rect(offs-1,offsY-1,lvl.w*spacing+2,lvl.h*spacing+2,10)
-
-  drawInstructions(offs,offsY*2+lvl.w*spacing)
+    
+  drawInstructions(offs,offsY*2+lvl.w*spacing+30)
   textSize(20)
   text("copyright Alex Mendelsberg 2025 - v0.3.2",offs,15)
   }
