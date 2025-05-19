@@ -9,6 +9,7 @@ class level {
         this.words = [];
         this.shuffled = [];
         this.lost = false
+        this.solved = false
     }
     loadLevel(){
         this.data = lvldata
@@ -47,23 +48,24 @@ class level {
         numStr = numStr.padStart(4," ")
 
         this.tiles.forEach(t=>{
+            t.h = 240
+            t.b = 30
+            t.char = ' '
+            
             let counter = t.index
             if(counter <winStr.length){
                 t.char =winStr[counter]
                 if(t.char != " "){
-                    t.c = color(0,255,0)
-                } else {
-                    t.c = color(255)
-                }
+                    t.h = 120
+                    t.b = 30
+                } 
             }
             else if(counter > 11 && counter <16){
                 t.char = numStr[counter-12]
-                t.c = color(250,250,0)
-            } else {
-                t.char = ' '
-                t.c = color(255)
+                t.h = 50
+                t.b = 30
             }
-            })
+        })
     }
 
     showLoss(){
@@ -152,9 +154,6 @@ class level {
 
             swap_tile.x = px1
             swap_tile.y = py1
-            selected_tile.chomps++;
-            swap_tile.chomps++;
-            if(swap_tile.chomps >=5 || selected_tile.chomps >=5) this.lost = true;
         }
         
     }
@@ -191,10 +190,10 @@ class level {
             this.showLoss();
             return;
         } else if(!this.solved && !moving){
-            console.log
             this.checkWin()
             if(this.solved){
-                lvl.showWin()
+                console.log("im here")
+                this.showWin()
             }
         }
     }
