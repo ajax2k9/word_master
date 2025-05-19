@@ -13,7 +13,8 @@ class tile {
     this.posY = y*spacing
     this.moving = false
     this.chomps = 0;
-    this.firstpass = true
+    this.set_color()
+    this.set_chars()
   }
 
   set_color(){
@@ -28,16 +29,20 @@ class tile {
     } else {
       this.solved = false
       if(lvl.words[y].indexOf(this.char) >= 0){
+
         this.h = 50
         this.b = 40
       }
     }
+  }
 
+  swap(){
+    this.set_chars();
+    this.set_color();
     if(!this.solved && !this.firstpass){
       this.chomps++;
       if(this.chomps >=5) lvl.lost = true;
     }
-    this.firstpass = false
   }
 
   set_chars(){
@@ -90,10 +95,6 @@ class tile {
       this.posY +=(desY - this.posY)/5
       this.moving = true
     } else {
-      if(this.moving&&!lvl.solved &&!lvl.lost){
-        this.set_chars()
-        this.set_color()
-      }
       this.moving = false
       this.posX = desX
       this.posY = desY

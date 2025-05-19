@@ -154,6 +154,10 @@ class level {
 
             swap_tile.x = px1
             swap_tile.y = py1
+
+            selected_tile.swap()
+            swap_tile.swap()
+
         }
         
     }
