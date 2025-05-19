@@ -144,11 +144,15 @@ class level {
         })
 
         if(swap_tile != undefined){
+            let t1 = swap_tile;
+            let t2 = selected_tile;
+            if(abs(t1.posX - t2.posX) > spacing/2) return;
+            if(abs(t1.posY - t2.posY) > spacing/2) return;
+
             let px1 = selected_tile.x;
             let py1 = selected_tile.y;
             let px2 = swap_tile.x;
             let py2 = swap_tile.y;
-
             selected_tile.x = px2
             selected_tile.y = py2
 
