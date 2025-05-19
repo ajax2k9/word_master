@@ -59,9 +59,9 @@ class tile {
     this.c = color(this.h,this.b,100)
     this.c2 = color(this.h,this.b/2,100)   
     this.c3 = color(this.h,this.b/3,100)   
-    let corner = 0.3*spacing
+    let corner = 30
     fill(this.c)
-    rect(this.posX,this.posY,spacing-4,spacing-4,corner)
+    rect(this.posX,this.posY,spacing-8,spacing-8,corner)
     noFill()
     stroke(this.c2)
     strokeWeight(10)

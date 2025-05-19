@@ -20,7 +20,8 @@ function preload(){
 }
 function setup() {
   pixelDensity(1)
-  spacing = floor(min(100*windowHeight/windowWidth*1920/676,200));
+  //spacing = floor(min(100*windowHeight/windowWidth*1920/676,200));
+  spacing = 200
   scale_ratio =spacing/100
   sizeX = 4 * spacing+200;
   cnv  = createCanvas(sizeX, sizeX+300);
