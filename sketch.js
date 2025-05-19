@@ -53,7 +53,8 @@ function drawInstructions(x,y){
   fill(0)
   text(
     "How To Play:\n\n"+ 
-    "Drag the letters to swap them. \nTry to solve the four words, with Green being a letter in \nthe right place, Yellow being in the wrong place but\nright word",x,y);
+    "Drag the letters to swap them. \nTry to solve the four words, with Green being a letter in \nthe right place, Yellow being in the wrong place but\nright word.\n"+
+    "Letters not placed in the right place get chomped, 5 chomps and its \nGame Over!",x,y);
 }
 
 function drawContainer(){
@@ -93,7 +94,7 @@ function draw() {
     
   drawInstructions(offs,offsY*2+lvl.w*spacing+30)
   textSize(20)
-  text("copyright Alex Mendelsberg 2025 - v0.3.2",offs,15)
+  text("copyright Alex Mendelsberg 2025 - v0.4.0",offs,15)
   }
 
 
