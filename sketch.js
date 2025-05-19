@@ -25,6 +25,7 @@ function setup() {
   sizeX = 4 * spacing+200;
   cnv  = createCanvas(sizeX, sizeX+300);
   rectMode(CENTER)
+  colorMode(HSB)
   lvl = new level()
   lvl.loadLevel()
 
@@ -32,7 +33,7 @@ function setup() {
 
 
 function mousePressed(){
-  if(lvl.solved) return
+  if(lvl.solved || lvl.lost) return
   lvl.selTile(mouseX-offs-spacing/2,mouseY-offsY-spacing/2)
   return false
 }
