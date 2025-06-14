@@ -2,11 +2,7 @@ class tile {
   constructor(x,y) {
     this.x = x
     this.y = y
-    this.hue = 240;
-    this.b = 10;
     this.c = color(255)
-    this.c2 = color(255)
-    this.c3 = color(255)
     this.solved = true;
     this.index = 0;
     this.posX = x*spacing
@@ -15,23 +11,33 @@ class tile {
     this.chomps = 0;
     this.set_color()
     this.set_chars()
+
+    this.chips = []
+    let sp = spacing/2;
+    let chip_num = floor(random(4,7))
+    for(let i = 0; i < chip_num; i++){
+      let ang = i/chip_num*2*PI+radians(2)
+      this.chips.push(
+        {
+          x:random(sp/2,sp/1.5) * cos(ang),
+          y:random(sp/2,sp/1.5) * sin(ang)
+        })
+    }
+
   }
 
   set_color(){
     let x = dblround(this.x)
     let y = dblround(this.y)
-    this.h = 240;
-    this.b = 20
+    this.c = color(0,0,80)
     if(this.char == lvl.words[y][x]){
-      this.h = 120
-      this.b = 30
       this.solved = true;
+      this.c = color(120,100,100)
     } else {
       this.solved = false
       if(lvl.words[y].indexOf(this.char) >= 0){
-
-        this.h = 50
-        this.b = 40
+        this.c = color(60,100,100)
+        
       }
     }
   }
@@ -39,7 +45,7 @@ class tile {
   swap(){
     this.set_chars();
     this.set_color();
-    if(!this.solved && !this.firstpass){
+    if(!this.solved && !this.firstpass && selected_tile == this){
       this.chomps++;
       if(this.chomps >=5) lvl.lost = true;
     }
@@ -52,37 +58,37 @@ class tile {
   }
 
   drawTile(){
-    push()
-    this.mask()
+    let offs = 2;
+    let x = this.posX
+    let y = this.posY
     noStroke()
-
-    this.c = color(this.h,this.b,100)
-    this.c2 = color(this.h,this.b/2,100)   
-    this.c3 = color(this.h,this.b/3,100)   
-    let corner = 30
     fill(this.c)
-    rect(this.posX,this.posY,spacing-8,spacing-8,corner)
-    noFill()
-    stroke(this.c2)
-    strokeWeight(10)
-    rect(this.posX,this.posY,spacing-30,spacing-30,max(corner - 10,0))
-    noStroke()
-    fill(this.c3)
-    rect(this.posX,this.posY,spacing-60,spacing-60,max(corner - 20,0))
-    fill(0)
-    textAlign(CENTER,CENTER)
-    textStyle(BOLD)
-    text(this.char,this.posX,this.posY)    
-    pop()
+    if(this.chomps<1)this.draw_arc(x,y,offs,0)
+    if(this.chomps<2)this.draw_arc(x,y,offs,PI/2)
+    if(this.chomps<3)this.draw_arc(x,y,offs,PI)
+    if(this.chomps<4)this.draw_arc(x,y,offs,PI*1.5)
+    fill(200,50,50)
+    circle(this.posX,this.posY,spacing/2)
+    fill(255)
+  
+    text(this.char,this.posX,this.posY)
   }
 
-  mask(){
-    beginClip({invert: true})
-    if(this.chomps > 0) circle(this.posX-spacing/2.5,this.posY-spacing/2.5,spacing/2);
-    if(this.chomps > 1) circle(this.posX+spacing/2.5,this.posY-spacing/2.5,spacing/2);
-    if(this.chomps > 2) circle(this.posX-spacing/2.5,this.posY+spacing/2.5,spacing/2);
-    if(this.chomps > 3) circle(this.posX+spacing/2.5,this.posY+spacing/2.5,spacing/2);
-    endClip()
+
+  draw_arc(x,y,offs,ang){
+    push()
+      translate(x,y)
+      rotate(ang)
+      translate(offs,offs)
+      
+      let w = spacing/1.2
+
+      beginClip({invert: false})
+        arc(0,0,w/1.1,w/1.1,0,PI/2)
+      endClip()
+      rectMode(CORNER)
+      square(0,0,w/2.2,8)
+    pop()
   }
 
   draw(){

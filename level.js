@@ -180,6 +180,7 @@ class level {
 
     
     draw(){
+        textAlign(CENTER,CENTER)
         textSize(24 * scale_ratio)
         let moving = false
         this.moving = false
